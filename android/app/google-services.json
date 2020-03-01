@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "240347278071",
+    "firebase_url": "https://planner-72a47.firebaseio.com",
+    "project_id": "planner-72a47",
+    "storage_bucket": "planner-72a47.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240347278071:android:6a30537ff89b8214a9c1f2",
+        "android_client_info": {
+          "package_name": "com.example.flutter_appp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240347278071-a62250p14v2043e1rl1dig51s9c21ibr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_h6229YIE4KpJYCxruc15rSW0feejxqk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "240347278071-a62250p14v2043e1rl1dig51s9c21ibr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
