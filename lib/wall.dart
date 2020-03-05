@@ -1,18 +1,18 @@
+//import 'package:flutter/cupertino.dart';
+//import 'package:flutter/cupertino.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class wall{
 
-  final String uid;
+  final String id;
   final String type;
-  final Offset  p1;
-  final Offset p2;
-
-  // final String x1;
-  // final String y1;
-  // final String x2;
-  // final String y2;
+  final Polyline p;
+  // final Offset p1;
+  // final Offset p2;
+ 
 
 
-  wall({this.uid,this.type,this.p1,this.p2});
+  wall(this.id,this.type,this.p);
 
 }

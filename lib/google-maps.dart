@@ -10,18 +10,41 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  List<wall> place=[
-  wall(uid:'1',type:'cement',p1:Offset (-100, 0), p2:Offset(-100, 250)),
-  wall(uid:'2',type:'cement',p1:Offset(-100, 0), p2:Offset(50, 0)),
-  wall(uid:'3',type:'cement',p1:Offset(50, 250), p2: Offset(-100, 250)),
-  wall(uid:'4',type:'cement',p1:Offset(50, 250), p2: Offset(50, 100)),
-  wall(uid:'5',type:'cement',p1:Offset(50, 100), p2: Offset(50, 0)),
-  wall(uid:'6',type:'cement',p1:Offset(50, 100), p2: Offset(150, 100)),
-  wall(uid:'7',type:'cement',p1:Offset(50, 250), p2: Offset(150, 250)),
-  wall(uid:'8',type:'cement',p1:Offset(50, 0), p2: Offset(150, 0)),
-  wall(uid:'9',type:'cement',p1:Offset(150, 100), p2: Offset(150, 0)),
-  wall(uid:'10',type:'cement',p1:Offset(150, 250), p2: Offset(150, 100)),
-  ];
+  
+  // List<wall> place=[
+  //   wall(id:'1' , type:'cement' ,
+  //    p: New Polyline(
+  //      polylineId:PolylineId('111'),
+  //      consumeTapEvents:false,
+  //      color:Colors.black,
+  //      endCap: Cap.squareCap,
+  //      geodesic:false,
+  //      jointType: JointType.round,
+  //      points:[LatLng(-100, 250),LatLng(-100, 0)],
+  //       ),
+  // wall(id:'1',type:'cement',p1:Offset (-100, 0), p2:Offset(-100, 250)),
+  // wall(id:'2',type:'cement',p1:Offset(-100, 0), p2:Offset(50, 0)),
+  // wall(id:'3',type:'cement',p1:Offset(50, 250), p2: Offset(-100, 250)),
+  // wall(id:'4',type:'cement',p1:Offset(50, 250), p2: Offset(50, 100)),
+  // wall(id:'5',type:'cement',p1:Offset(50, 100), p2: Offset(50, 0)),
+  // wall(id:'6',type:'cement',p1:Offset(50, 100), p2: Offset(150, 100)),
+  // wall(id:'7',type:'cement',p1:Offset(50, 250), p2: Offset(150, 250)),
+  // wall(id:'8',type:'cement',p1:Offset(50, 0), p2: Offset(150, 0)),
+  // wall(id:'9',type:'cement',p1:Offset(150, 100), p2: Offset(150, 0)),
+  // wall(id:'10',type:'cement',p1:Offset(150, 250), p2: Offset(150, 100)),
+  //];
+  List<Polyline> walla=[ Polyline(
+        points: [LatLng(-100,0), LatLng(-100, 250)],
+        color: Colors.amber,
+        visible: true,
+        polylineId: PolylineId("line_one"),
+      ),  Polyline(
+        points: [LatLng(-100,0), LatLng(50,0)],
+        color: Colors.amber,
+        visible: true,
+        polylineId: PolylineId("line_two  "),
+      ),
+      ];
   
 
   GoogleMapController mapController;
