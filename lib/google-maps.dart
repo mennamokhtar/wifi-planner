@@ -10,7 +10,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  
   // List<wall> place=[
   //   wall(id:'1' , type:'cement' ,
   //    p: New Polyline(
@@ -33,19 +32,27 @@ class _MyAppState extends State<MyApp> {
   // wall(id:'9',type:'cement',p1:Offset(150, 100), p2: Offset(150, 0)),
   // wall(id:'10',type:'cement',p1:Offset(150, 250), p2: Offset(150, 100)),
   //];
-  List<Polyline> walla=[ Polyline(
-        points: [LatLng(-100,0), LatLng(-100, 250)],
-        color: Colors.amber,
-        visible: true,
-        polylineId: PolylineId("line_one"),
-      ),  Polyline(
-        points: [LatLng(-100,0), LatLng(50,0)],
-        color: Colors.amber,
-        visible: true,
-        polylineId: PolylineId("line_two  "),
-      ),
-      ];
-  
+  List<Polyline> walla = [
+    Polyline(
+      points: [LatLng(-100, 0), LatLng(-100, 250)],
+      color: Colors.amber,
+      visible: true,
+      polylineId: PolylineId("line_one"),
+    ),
+    Polyline(
+      points: [LatLng(-100, 0), LatLng(50, 0)],
+      color: Colors.amber,
+      visible: true,
+      polylineId: PolylineId("line_two  "),
+    ),
+  ];
+
+  wall a = new wall(
+      id: 'hey there',
+      type: 'wall1',
+      p: new Polyline(
+          polylineId: PolylineId('line1'),
+          points: [LatLng(1, 2), LatLng(3, 4), LatLng(5, 6)]));
 
   GoogleMapController mapController;
 
@@ -65,8 +72,8 @@ class _MyAppState extends State<MyApp> {
         ),
         body: GoogleMap(
           onMapCreated: _onMapCreated,
-                    mapType: MapType.none,
-                    // polygons: MapType,
+          mapType: MapType.none,
+          // polygons: MapType,
           initialCameraPosition: CameraPosition(
             target: _center,
             zoom: 11.0,
@@ -74,11 +81,5 @@ class _MyAppState extends State<MyApp> {
         ),
       ),
     );
-
-    
-
-
-    
-
   }
 }
