@@ -4,12 +4,12 @@ import 'package:flutter_appp/addAcessPoint.dart';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class TestMapPolyline extends StatefulWidget {
+class mapa extends StatefulWidget {
   @override
-  _TestMapPolylineState createState() => _TestMapPolylineState();
+  _mapaState createState() => _mapaState();
 }
 
-class _TestMapPolylineState extends State<TestMapPolyline> {
+class _mapaState extends State<mapa> {
 
   final Set<Polyline> _polyline = {};                 
 
@@ -89,28 +89,33 @@ class _TestMapPolylineState extends State<TestMapPolyline> {
           ),
          
           
-             Stack(    children: <Widget>[  
-             Container(
-         alignment: Alignment.topRight,
-          child: FloatingActionButton(
-            backgroundColor: Colors.black,
-            child: Icon(Icons.add),
-            onPressed: () {
-              Navigator.push(
-                   context,
-                   MaterialPageRoute(builder: (context) => addAcessPoint()),
-                  );
+             Stack(  
+            children: <Widget>[  
+      //        Positioned(
+      //                width: MediaQuery.of(context).size.width,
+      //                bottom:MediaQuery.of(context).size.height-100,
+      //        child: Container(
+      //        alignment: Alignment.topRight,
+      //        child: FloatingActionButton(
+      //        backgroundColor: Colors.black,
+      //        child: Icon(Icons.add),
+      //        onPressed: () {
+      //           Navigator.push(
+      //                context,
+      //                MaterialPageRoute(builder: (context) => addAcessPoint()),
+      //               );
 
-            },
-          ),
+      //       },
+      //     ),
         
-      ),
+      // ),
+      //        ),
 
       
 Positioned(
                    // height: 50,
                     width: MediaQuery.of(context).size.width,
-                    bottom:MediaQuery.of(context).size.height-150,
+                    bottom:MediaQuery.of(context).size.height-200,
      
      child: Container(
           alignment: Alignment.topRight,
@@ -124,7 +129,9 @@ Positioned(
           ),
         ),
       
-                )   ]) 
+                ) ,
+                  ],
+                  ) ,
     
         ],
      ) );
