@@ -1,6 +1,15 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+class database{
+ // String dataa=UploadMultipleImageDemo.data;
 
-class DatabaseService{
-  final CollectionReference placesCollection=Firestore.instance.collection('places');
- 
+final String uid;
+database({this.uid});
+  final CollectionReference placeData=Firestore.instance.collection('placeData');
+  
+  
+  Future updateUserData(String dataa)async{
+    return await placeData.document(uid).setData({
+      'data':dataa
+    });
+  }
 }

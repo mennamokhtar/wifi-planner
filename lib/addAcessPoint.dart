@@ -11,7 +11,7 @@ class addAcessPoint extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        //title: Text("Help"),
+        title: Text("Add an access point"),
       ),
        body:ListView.builder(
           itemCount: 2,

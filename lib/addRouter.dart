@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-//import 'package:flutter_appp/routerDetails.dart';
+import 'package:flutter_appp/testtttt.dart';
 
 class addRouter  extends StatefulWidget {
   @override
@@ -81,9 +81,29 @@ class _routerDetailsState extends State<routerDetails> {
         child:Card(
         child:ListTile(
           title: Text(widget.post.data["name"]),
-          subtitle: Text(widget.post.data["info"]),
+          subtitle: Text(widget.post.data["info"],
+           style: TextStyle(
+          color: Colors.black,)
+          ),
+          trailing:
+               CircleAvatar(
+                 radius: 30,
+                backgroundColor: Color(0xFF000000),
+                                child: IconButton(icon: Icon(Icons.add,
+                 color: Colors.white,), onPressed: () {
+                   Navigator.push(
+                 context,
+                 MaterialPageRoute(builder: (context) => mapa()),
+              );
+
+                 }),
+               )
+              
         ),
+        
+        
         ),
+        
       ),
     );
   }

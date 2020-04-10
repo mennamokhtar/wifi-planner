@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
               else if(index==1){  
                Navigator.push(
                context,
-               MaterialPageRoute(builder: (context) => App()),
+               MaterialPageRoute(builder: (context) => UploadMultipleImageDemo()),
               );}
               else if(index==2){  
                Navigator.push(
