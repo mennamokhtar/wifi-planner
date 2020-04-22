@@ -1,5 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appp/database.dart';
+import 'package:flutter_appp/insertFile.dart';
+import 'package:flutter_appp/testtttt.dart';
+import 'package:flutter_appp/user.dart';
+import 'package:provider/provider.dart';
 
 class addRepeater  extends StatefulWidget {
   @override
@@ -57,6 +62,7 @@ class _addRepeaterState extends State<addRepeater> {
 
 class repeaterDetails extends StatefulWidget {
  // routerDetails({Key key}) : super(key: key);
+  static String s;
   final DocumentSnapshot post;
   repeaterDetails({this.post});
   @override
@@ -64,10 +70,11 @@ class repeaterDetails extends StatefulWidget {
 }
 
 class _repeaterDetailsState extends State<repeaterDetails> {
-  
+   String d=UploadMultipleImageDemo.data;
 
   @override
   Widget build(BuildContext context) {
+     User user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
@@ -79,7 +86,30 @@ class _repeaterDetailsState extends State<repeaterDetails> {
         child:Card(
         child:ListTile(
           title: Text(widget.post.data["name"]),
-          subtitle: Text(widget.post.data["info"]),
+           subtitle: Text(widget.post.data["info"],
+           style: TextStyle(
+          color: Colors.black,)
+          ),
+          trailing:
+               CircleAvatar(
+                 radius: 30,
+                backgroundColor: Color(0xFF000000),
+                                child: IconButton(icon: Icon(Icons.add,
+                 color: Colors.white,),
+                  onPressed: () async{
+                     await database(uid: user.uid).updateUserData(
+                       d,
+                      repeaterDetails.s=widget.post.data["name"],
+                      'hooooooo'
+                      );
+                   Navigator.push(
+                 context,
+                 MaterialPageRoute(builder: (context) => mapa()),
+              );
+
+                 }),
+               )
+              
         ),
         ),
       ),
