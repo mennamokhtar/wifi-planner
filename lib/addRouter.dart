@@ -1,6 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_appp/database.dart';
 import 'package:flutter_appp/testtttt.dart';
+import 'package:flutter_appp/user.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_appp/insertFile.dart';
+
 
 class addRouter  extends StatefulWidget {
   @override
@@ -58,6 +63,7 @@ class _addRouterState extends State<addRouter> {
   }
 }
 class routerDetails extends StatefulWidget {
+    static String s;
  // routerDetails({Key key}) : super(key: key);
   final DocumentSnapshot post;
   routerDetails({this.post});
@@ -66,10 +72,10 @@ class routerDetails extends StatefulWidget {
 }
 
 class _routerDetailsState extends State<routerDetails> {
-  
-
+    String d=UploadMultipleImageDemo.data;
   @override
   Widget build(BuildContext context) {
+      User user = Provider.of<User>(context);
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
@@ -90,7 +96,13 @@ class _routerDetailsState extends State<routerDetails> {
                  radius: 30,
                 backgroundColor: Color(0xFF000000),
                                 child: IconButton(icon: Icon(Icons.add,
-                 color: Colors.white,), onPressed: () {
+                 color: Colors.white,),
+                  onPressed: () async{
+                     await database(uid: user.uid).updateUserData(
+                       d,
+                      routerDetails.s=widget.post.data["name"],
+                      'hooooooo'
+                      );
                    Navigator.push(
                  context,
                  MaterialPageRoute(builder: (context) => mapa()),

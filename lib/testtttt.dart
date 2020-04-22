@@ -1,23 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appp/addAcessPoint.dart';
-//import 'accesspoint.dart';
-
+import 'package:flutter_appp/database.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:flutter_appp/user.dart';
+import 'package:provider/provider.dart';
+import 'package:flutter_appp/insertFile.dart';
+import 'package:flutter_appp/addRouter.dart';
 
 class mapa extends StatefulWidget {
+
   @override
   _mapaState createState() => _mapaState();
 }
 
 class _mapaState extends State<mapa> {
+     String d=UploadMultipleImageDemo.data;
+     String router=routerDetails.s;
 
-  final Set<Polyline> _polyline = {};                 
+  final Set<Polyline> _polyline = {};  
+             
 
   GoogleMapController controller;                     
   
   List<LatLng> latlngSegment1 = List();
   List<LatLng> latlngSegment2 = List();
   List<LatLng> latlngSegment3 = List();
+  List<LatLng> latlngSegment4 = List();
 
   static LatLng _lat1 = LatLng(0,0);
   static LatLng _lat2 = LatLng(0,5);
@@ -32,37 +40,102 @@ class _mapaState extends State<mapa> {
   @override
   void initState() {
     super.initState();
+    markers=Set.from([]);
+
+
+//       latlngSegment2.add(_wall1Lat1);
+//       latlngSegment2.add(_wall1Lat2);       latlngSegment2.add(_wall2Lat1); latlngSegment2.add(_wall2Lat2);
+//       latlngSegment2.add(_wall3Lat1);latlngSegment2.add(_wall3Lat2); latlngSegment2.add(_wall4Lat1);
+// latlngSegment2.add(_wall4Lat2); latlngSegment2.add(_wall5Lat1);latlngSegment2.add(_wall5Lat2);latlngSegment2.add(_wall6Lat1);
+// latlngSegment2.add(_wall6Lat2); latlngSegment2.add(_wall7Lat1);latlngSegment2.add(_wall7Lat2);latlngSegment2.add(_wall8Lat1);
+// latlngSegment2.add(_wall8Lat2); latlngSegment2.add(_wall9Lat1); latlngSegment2.add(_wall9Lat2); latlngSegment2.add(_wall10Lat1);
+// latlngSegment2.add(_wall10Lat2);
     //line segment 1
+    latlngSegment2.add(_lat4);
+    latlngSegment2.add(_lat5);
     latlngSegment1.add(_lat4);
     latlngSegment1.add(_lat8);
     latlngSegment1.add(_lat7);
     latlngSegment1.add(_lat1);
     latlngSegment1.add(_lat4);
-
-
-    // //line segment 2
-    // latlngSegment2.add(_lat5);
-    // latlngSegment2.add(_lat2);
-    // latlngSegment2.add(_lat7);
-    // latlngSegment2.add(_lat6);
-    //  latlngSegment2.add(_lat5);
     //line segment 3
     latlngSegment3.add(_lat3);
     latlngSegment3.add(_lat2);
     latlngSegment3.add(_lat5);
     latlngSegment3.add(_lat6);
-    //latlngSegment3.add(_lat2);
+//     //latlngSegment3.add(_lat2);
+// latlngSegment4.add(_lat8);
+// latlngSegment4.add(_lat5);
+
+
   }
+  createMarker(context){
+    if (customicon==null){
+      ImageConfiguration configuration=createLocalImageConfiguration(context);
+      BitmapDescriptor.fromAssetImage(configuration, 'assets/p4.png').then((icon){
+        setState((){
+          customicon=icon; 
 
- button(){
-  Navigator.push(
-               context,
-               MaterialPageRoute(builder: (context) => addAcessPoint()),
-              );
-}
+        });
+      });
+    }
+  }
+   void _onMapCreated(GoogleMapController controllerParam) {
+    setState(() {
+      controller = controllerParam;
+      // for(int i=0;i<walls.length;i++){
+      //  _polyline.add(Polyline(
+      //   polylineId: PolylineId('line1'),
+      //   visible: true,
+      //   //latlng is List<LatLng>
+      //   points: walls[i].p.points,
+      //   width: 2,
+      //   color: Colors.black,
+      // ));
+      // }
 
+     
+      
+      _polyline.add( Polyline(
+        polylineId: PolylineId('line1'),
+        visible: true,
+        //latlng is List<LatLng>
+        points:latlngSegment1  ,
+        width: 2,
+        color: Colors.black,
+      ));
+      
+          _polyline.add( new Polyline(
+        polylineId: PolylineId('line2'),
+        visible: true,
+        //latlng is List<LatLng>
+        points: latlngSegment3,
+        width: 2,
+        color: Colors.black,
+        
+      ));
+      
+      //   _polyline.add(new Polyline(
+      //   polylineId: PolylineId('line2'),
+      //   visible: true,
+      //   //latlng is List<LatLng>
+      //   points: latlngSegment4,
+      //   width: 2,
+      //   color: Colors.red
+      // ));
+      
+    });
+  }
+var latitude ;
+var longitude ;
+LatLng point;
+ String x;
+BitmapDescriptor customicon;
+Set<Marker>markers;
   @override
   Widget build(BuildContext context) {
+     User user = Provider.of<User>(context);
+    createMarker(context);
     return Scaffold(
     body: Stack(
         children: <Widget>[
@@ -73,6 +146,30 @@ class _mapaState extends State<mapa> {
                 height: MediaQuery.of(context).size.height,
                 
                 child: GoogleMap(
+                  markers:markers,
+                   onTap: (pos) async{
+                       await database(uid: user.uid).updateUserData(
+                       d,
+                      router,
+                       x=pos.toString()
+                      );
+    // you have latitude and longitude here 
+    print(pos);
+    Marker m=Marker(
+      markerId: MarkerId('1'),
+     
+      //icon: customicon,
+      position: pos
+    );
+     setState((){
+ markers.add(m);
+      });
+   
+    //  latitude = latLng.latitude;
+    //  longitude = latLng.longitude;
+     
+  },
+ // markers: Set<Marker>.of(markers.values), 
             //that needs a list<Polyline>
             polylines: _polyline,
             onMapCreated: _onMapCreated,
@@ -90,46 +187,48 @@ class _mapaState extends State<mapa> {
          
           
              Stack(  
-            children: <Widget>[  
-      //        Positioned(
-      //                width: MediaQuery.of(context).size.width,
-      //                bottom:MediaQuery.of(context).size.height-100,
-      //        child: Container(
-      //        alignment: Alignment.topRight,
-      //        child: FloatingActionButton(
-      //        backgroundColor: Colors.black,
-      //        child: Icon(Icons.add),
-      //        onPressed: () {
-      //           Navigator.push(
-      //                context,
-      //                MaterialPageRoute(builder: (context) => addAcessPoint()),
-      //               );
-
-      //       },
-      //     ),
-        
-      // ),
-      //        ),
-
-      
-Positioned(
-                   // height: 50,
-                    width: MediaQuery.of(context).size.width,
-                    bottom:MediaQuery.of(context).size.height-200,
-     
-     child: Container(
-          alignment: Alignment.topRight,
-          child: FloatingActionButton(
-            backgroundColor: Colors.black,
-            child: Text('save'),
-            onPressed: () {
+            children: <Widget>[ 
+               
+              Container(
+               
+                 margin: EdgeInsets.only(top:MediaQuery.of(context).size.height-600  ),
+                child: RaisedButton(
+                   
+                       shape: RoundedRectangleBorder(
+                         borderRadius: new BorderRadius.circular(10.0),
+                       ),
               
-
-            },
-          ),
-        ),
-      
-                ) ,
+                     child:new Icon(
+                       Icons.add,
+                       color: Colors.white,),
+                      color: Colors.black,
+                      elevation: 4.0,
+                      onPressed: () {
+                    Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => addAcessPoint()),
+                    );
+                 
+              
+        
+                       },
+                    ),
+              ),
+            
+             Container(
+                margin: EdgeInsets.only(top:MediaQuery.of(context).size.height-650  ),
+               child: FloatingActionButton.extended(
+                  
+                onPressed: (){
+        
+                },
+                tooltip: 'Choose file to import', 
+               backgroundColor: Colors.black,
+               //icon:Icon(Icons.add),
+               label: Text('save'),
+            ),
+             )
+    
                   ],
                   ) ,
     
@@ -138,119 +237,5 @@ Positioned(
     
   }
 
-  void _onMapCreated(GoogleMapController controllerParam) {
-    setState(() {
-      controller = controllerParam;
-      // for(int i=0;i<walls.length;i++){
-      //  _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points: walls[i].p.points,
-      //   width: 2,
-      //   color: Colors.black,
-      // ));
-      // }
-
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points:  walls[0].p.points,
-      //   width: 2,
-      //   color: Colors.blue,
-      // ));
-      
-      _polyline.add(Polyline(
-        polylineId: PolylineId('line1'),
-        visible: true,
-        //latlng is List<LatLng>
-        points:latlngSegment1  ,
-        width: 2,
-        color: Colors.black,
-      ));
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line2'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points: latlngSegment2,
-      //   width: 2,
-      //   color: Colors.red,
-      // ));
-          _polyline.add(Polyline(
-        polylineId: PolylineId('line2'),
-        visible: true,
-        //latlng is List<LatLng>
-        points: latlngSegment3,
-        width: 2,
-        color: Colors.black,
-      ));
-      
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points:  walls[3].p.points,
-      //   width: 2,
-      //   color: Colors.blue,
-      // ));
-      
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points:  walls[4].p.points,
-      //   width: 2,
-      //   color: Colors.blue,
-      // ));
-      
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points:  walls[5].p.points,
-      //   width: 2,
-      //   color: Colors.blue,
-      // ));
-      
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points:  walls[6].p.points,
-      //   width: 2,
-      //   color: Colors.blue,
-      // ));
-      
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points:  walls[7].p.points,
-      //   width: 2,
-      //   color: Colors.blue,
-      // ));
-      
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points:  walls[8].p.points,
-      //   width: 2,
-      //   color: Colors.blue,
-      // ));
-      
-      // _polyline.add(Polyline(
-      //   polylineId: PolylineId('line1'),
-      //   visible: true,
-      //   //latlng is List<LatLng>
-      //   points:  walls[9].p.points,
-      //   width: 2,
-      //   color: Colors.blue,
-      // ));
-
-      //different sections of polyline can have different colors
-      
-    });
-  }
+ 
 }

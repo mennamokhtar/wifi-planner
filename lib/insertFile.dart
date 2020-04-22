@@ -4,8 +4,8 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_appp/database.dart';
-import 'package:flutter_appp/test2.dart';
 import 'package:flutter_appp/user.dart';
+import 'package:flutter_appp/testtttt.dart';
 import 'package:provider/provider.dart';
 class UploadMultipleImageDemo extends StatefulWidget {
   //global variable
@@ -21,6 +21,7 @@ class UploadMultipleImageDemo extends StatefulWidget {
 class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
   //
   String _path;
+  String s='hiiiii';
   Map<String, String> _paths;
   String _extension;
   FileType _pickType;
@@ -85,6 +86,7 @@ class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
     return '${snapshot.bytesTransferred}/${snapshot.totalByteCount}';
   }
   String d=UploadMultipleImageDemo.data;
+  String router;
 
   @override
   Widget build(BuildContext context) {
@@ -122,13 +124,14 @@ class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
                onPressed: () async {
                     //if(_formKey.currentState.validate()){
                       await database(uid: user.uid).updateUserData(
-                       d
-                       
+                       d,
+                      router,
+                      s
                       );
                      
                     Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => maps()),
+                MaterialPageRoute(builder: (context) => mapa()),
                );
 
                   },

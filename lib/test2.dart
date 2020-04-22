@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_appp/addAcessPoint.dart';
-import 'package:flutter_appp/heatmap.dart';
-import 'package:flutter_appp/insertFile.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
-class maps extends StatefulWidget {
-
+class mapa extends StatefulWidget {
   @override
-  _mapsState createState() => _mapsState();
+  _mapaState createState() => _mapaState();
 }
 
-class _mapsState extends State<maps> {
+class _mapaState extends State<mapa> {
 
   final Set<Polyline> _polyline = {};  
-  String data=UploadMultipleImageDemo.data;
-  final Set<String> place = {};
+             
   GoogleMapController controller;                     
+  
   List<LatLng> latlngSegment1 = List();
   List<LatLng> latlngSegment2 = List();
   List<LatLng> latlngSegment3 = List();
@@ -34,8 +31,15 @@ class _mapsState extends State<maps> {
   @override
   void initState() {
     super.initState();
-    StringManipulation();
 
+
+//       latlngSegment2.add(_wall1Lat1);
+//       latlngSegment2.add(_wall1Lat2);       latlngSegment2.add(_wall2Lat1); latlngSegment2.add(_wall2Lat2);
+//       latlngSegment2.add(_wall3Lat1);latlngSegment2.add(_wall3Lat2); latlngSegment2.add(_wall4Lat1);
+// latlngSegment2.add(_wall4Lat2); latlngSegment2.add(_wall5Lat1);latlngSegment2.add(_wall5Lat2);latlngSegment2.add(_wall6Lat1);
+// latlngSegment2.add(_wall6Lat2); latlngSegment2.add(_wall7Lat1);latlngSegment2.add(_wall7Lat2);latlngSegment2.add(_wall8Lat1);
+// latlngSegment2.add(_wall8Lat2); latlngSegment2.add(_wall9Lat1); latlngSegment2.add(_wall9Lat2); latlngSegment2.add(_wall10Lat1);
+// latlngSegment2.add(_wall10Lat2);
     //line segment 1
     latlngSegment2.add(_lat4);
     latlngSegment2.add(_lat5);
@@ -50,15 +54,27 @@ class _mapsState extends State<maps> {
     latlngSegment3.add(_lat5);
     latlngSegment3.add(_lat6);
 //     //latlngSegment3.add(_lat2);
-  }
-  StringManipulation(){
-  //string.split(" "); 
-   print(data.split(":"));
+// latlngSegment4.add(_lat8);
+// latlngSegment4.add(_lat5);
+
 
   }
    void _onMapCreated(GoogleMapController controllerParam) {
     setState(() {
-      controller = controllerParam;      
+      controller = controllerParam;
+      // for(int i=0;i<walls.length;i++){
+      //  _polyline.add(Polyline(
+      //   polylineId: PolylineId('line1'),
+      //   visible: true,
+      //   //latlng is List<LatLng>
+      //   points: walls[i].p.points,
+      //   width: 2,
+      //   color: Colors.black,
+      // ));
+      // }
+
+     
+      
       _polyline.add( Polyline(
         polylineId: PolylineId('line1'),
         visible: true,
@@ -78,6 +94,14 @@ class _mapsState extends State<maps> {
         
       ));
       
+      //   _polyline.add(new Polyline(
+      //   polylineId: PolylineId('line2'),
+      //   visible: true,
+      //   //latlng is List<LatLng>
+      //   points: latlngSegment4,
+      //   width: 2,
+      //   color: Colors.red
+      // ));
       
     });
   }
@@ -144,10 +168,6 @@ class _mapsState extends State<maps> {
                child: FloatingActionButton.extended(
                   
                 onPressed: (){
-                  Navigator.push(
-                     context,
-                     MaterialPageRoute(builder: (context) => heatmap()),
-                    );
         
                 },
                 tooltip: 'Choose file to import', 
