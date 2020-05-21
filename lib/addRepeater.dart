@@ -68,7 +68,6 @@ class repeaterDetails extends StatefulWidget {
   @override
   _repeaterDetailsState createState() => _repeaterDetailsState();
 }
-
 class _repeaterDetailsState extends State<repeaterDetails> {
    String d=UploadMultipleImageDemo.data;
 
@@ -98,9 +97,11 @@ class _repeaterDetailsState extends State<repeaterDetails> {
                  color: Colors.white,),
                   onPressed: () async{
                      await database(uid: user.uid).updateUserData(
+                   
                        d,
                       repeaterDetails.s=widget.post.data["name"],
-                      'hooooooo'
+                      'hooooooo',
+                          user.uid,
                       );
                    Navigator.push(
                  context,

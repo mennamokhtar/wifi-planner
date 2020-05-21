@@ -99,9 +99,11 @@ class _routerDetailsState extends State<routerDetails> {
                  color: Colors.white,),
                   onPressed: () async{
                      await database(uid: user.uid).updateUserData(
+                       
                        d,
                       routerDetails.s=widget.post.data["name"],
-                      'hooooooo'
+                      'hooooooo',
+                      user.uid,
                       );
                    Navigator.push(
                  context,

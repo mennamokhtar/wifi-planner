@@ -124,6 +124,7 @@ class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
                onPressed: () async {
                     //if(_formKey.currentState.validate()){
                       await database(uid: user.uid).updateUserData(
+                        user.uid,
                        d,
                       router,
                       s
