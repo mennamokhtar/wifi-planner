@@ -164,7 +164,7 @@ Set<Marker>markers;
                        user.uid,
                        
                       );
-                       url = 'http://10.0.2.2:5000/api?Query=' +space.toString()+router.toString()+space.toString()+x.toString()+space.toString()+d.toString();
+                       url = 'http://10.0.2.2:5000/api?Query=' +space.toString()+router.toString()+space.toString()+x.toString()+space.toString()+d.toString()+space.toString()+user.uid.toString()+space.toString();
                           s = await Getdata(url);
                           var DecodedData = jsonDecode(s);
                           setState(() {
@@ -245,7 +245,7 @@ Set<Marker>markers;
            
 
                          
-                  http.Client().close();
+              //    http.Client().close();
                           
                             
                     //        Navigator.push(
