@@ -11,7 +11,6 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_appp/database.dart';
 import 'package:flutter_appp/user.dart';
-import 'package:flutter_appp/testtttt.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_appp/addAcessPoint.dart';
 class UploadMultipleImageDemo extends StatefulWidget {
@@ -33,10 +32,7 @@ class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
   List<homeItems> choices=[homeItems(name:'Your Places',icon:Icon(Icons.home))
   ,homeItems(name:'Insert A New Place',icon:Icon(Icons.add)),
   homeItems(name:'Help',icon:Icon(Icons.help))];
-   
-   //class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
-
-    String _path;
+  String _path;
   String s='hiiiii';
   Map<String, String> _paths;
   String _extension;
@@ -44,6 +40,8 @@ class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
   bool _multiPick = false;
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   List<StorageUploadTask> _tasks = <StorageUploadTask>[];
+  //User user = Provider.of<User>(context);
+  //User user =Provider.of<User>(context);
 
   void openFileExplorer() async {
     try {

@@ -5,7 +5,7 @@ import 'package:flutter_appp/heatmap.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutter_appp/user.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_appp/insertFile.dart';
+import 'package:flutter_appp/files.dart';
 import 'package:flutter_appp/addRouter.dart';
 import 'API.dart';
 import 'dart:convert';
@@ -159,10 +159,9 @@ Set<Marker>markers;
                        await database(uid: user.uid).updateUserData(
                       
                        d,
-                      router,
+                      routerDetails.s,
                        x=pos.toString(),
                        user.uid,
-                       
                       );
                        url = 'http://10.0.2.2:5000/api?Query=' +space.toString()+router.toString()+space.toString()+x.toString()+space.toString()+d.toString()+space.toString()+user.uid.toString()+space.toString();
                           s = await Getdata(url);

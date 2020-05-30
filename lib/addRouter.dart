@@ -4,7 +4,7 @@ import 'package:flutter_appp/database.dart';
 import 'package:flutter_appp/testtttt.dart';
 import 'package:flutter_appp/user.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_appp/insertFile.dart';
+import 'package:flutter_appp/files.dart';
 
 
 class addRouter  extends StatefulWidget {
@@ -73,10 +73,14 @@ class routerDetails extends StatefulWidget {
 
 class _routerDetailsState extends State<routerDetails> {
     String d=UploadMultipleImageDemo.data;
+ void pritt() {
+   print(routerDetails.s);
+ }
+
   @override
   Widget build(BuildContext context) {
       User user = Provider.of<User>(context);
-    return Scaffold(
+      return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
@@ -97,10 +101,11 @@ class _routerDetailsState extends State<routerDetails> {
                 backgroundColor: Color(0xFF000000),
                                 child: IconButton(icon: Icon(Icons.add,
                  color: Colors.white,),
+
                   onPressed: () async{
-                     await database(uid: user.uid).updateUserData(
-                       
-                       d,
+                    pritt();
+                     await database(uid: user.uid).updateUserData(                       
+                      UploadMultipleImageDemo.data,
                       routerDetails.s=widget.post.data["name"],
                       'hooooooo',
                       user.uid,
