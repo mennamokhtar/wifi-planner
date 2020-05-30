@@ -3,6 +3,7 @@ import 'package:flutter_appp/authenticate.dart';
 import 'package:flutter_appp/home.dart';
 import 'package:flutter_appp/user.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_appp/files.dart';
 
 
 class Wrapper extends StatelessWidget {
@@ -20,7 +21,8 @@ class Wrapper extends StatelessWidget {
      return Authenticate();
     }
     else{
-      return Home();
+    //  return Home();
+    return UploadMultipleImageDemo();
     }
   }
 } 

@@ -206,31 +206,31 @@ Set<Marker>markers;
              Stack(  
             children: <Widget>[ 
                
-              Container(
+              // Container(
                
-                 margin: EdgeInsets.only(top:MediaQuery.of(context).size.height-600  ),
-                child: RaisedButton(
+              //    margin: EdgeInsets.only(top:MediaQuery.of(context).size.height-600  ),
+              //   child: RaisedButton(
                    
-                       shape: RoundedRectangleBorder(
-                         borderRadius: new BorderRadius.circular(10.0),
-                       ),
+              //          shape: RoundedRectangleBorder(
+              //            borderRadius: new BorderRadius.circular(10.0),
+              //          ),
               
-                     child:new Icon(
-                       Icons.add,
-                       color: Colors.white,),
-                      color: Colors.black,
-                      elevation: 4.0,
-                      onPressed: () {
-                    Navigator.push(
-                     context,
-                     MaterialPageRoute(builder: (context) => addAcessPoint()),
-                    );
+              //        child:new Icon(
+              //          Icons.add,
+              //          color: Colors.white,),
+              //         color: Colors.black,
+              //         elevation: 4.0,
+              //         onPressed: () {
+              //       Navigator.push(
+              //        context,
+              //        MaterialPageRoute(builder: (context) => addAcessPoint()),
+              //       );
                  
               
         
-                       },
-                    ),
-              ),
+              //          },
+              //       ),
+              // ),
             
              Container(
                 margin: EdgeInsets.only(top:MediaQuery.of(context).size.height-650  ),
