@@ -1,59 +1,70 @@
+import 'dart:typed_data';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
-import 'API.dart';
-import 'dart:convert';
+import 'package:flutter_appp/testtttt.dart';
+class meeeeeee extends StatefulWidget {
+  //global variable
+  static String data;
 
-// void main() => runApp(MyApp());
 
-class MyApp extends StatefulWidget {
+  meeeeeee() : super();
+
+  final String title = 'Firebase Storage';
+
   @override
-  _MyAppState createState() => _MyAppState();
+  _meeeeeeeState createState() => _meeeeeeeState();
 }
 
-class _MyAppState extends State<MyApp> {
-  String url;
 
-  var Data;
+class _meeeeeeeState extends State<meeeeeee> {
+  String s;
+  final FirebaseStorage storage = FirebaseStorage(
+      app: Firestore.instance.app,
+      storageBucket: 'gs://planner-72a47.appspot.com');
+      //gs://planner-72a47.appspot.com
 
-  String QueryText = 'Query';
+  Uint8List imageBytes;
+  String errorMsg;
+
+
+  _meeeeeeeState() {
+  
+    String k=mapa.ID;
+   print(k) ;
+   print('yarab');
+                     
+     storage.ref().child(k).getData(10000000).then((data) =>
+
+
+                setState(() {
+                  imageBytes = data;
+                })
+        ).catchError((e) =>
+                setState(() {
+                  errorMsg = e.error;
+                })
+        );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('PYTHON AND FLUTTER'),
+    var img = imageBytes != null ? Image.memory(
+        imageBytes,
+        fit: BoxFit.cover,
+      ) : Text(errorMsg != null ? errorMsg : "Loading...");
+
+    return new Scaffold(
+        appBar: new AppBar(
+          title: new Text(widget.title),
         ),
-        body: Column(
+        body: new ListView(
           children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: TextField(
-                onChanged: (value) {
-                  url = 'http://10.0.2.2:5000/api?Query=' + value.toString();
-                },
-                decoration: InputDecoration(
-                    hintText: 'Search Anything Here',
-                    suffixIcon: GestureDetector(
-                        onTap: () async {
-                          Data = await Getdata(url);
-                          var DecodedData = jsonDecode(Data);
-                          setState(() {
-                            QueryText = DecodedData['Query'];
-                          });
-                        },
-                        child: Icon(Icons.search))),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: Text(
-                QueryText,
-                style: TextStyle(fontSize: 30.0, fontWeight: FontWeight.bold),
-              ),
-            ),
+            img,
           ],
-        ),
-      ),
-    );
+        ));
   }
-  }
+}
+

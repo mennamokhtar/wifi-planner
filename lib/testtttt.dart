@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_appp/addAcessPoint.dart';
+// import 'package:flutter_appp/addAcessPoint.dart';
 import 'package:flutter_appp/database.dart';
 import 'package:flutter_appp/heatmap.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
@@ -12,6 +12,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 class mapa extends StatefulWidget {
+   static String ID;
 
   @override
   _mapaState createState() => _mapaState();
@@ -20,6 +21,7 @@ class mapa extends StatefulWidget {
 class _mapaState extends State<mapa> {
      String d=UploadMultipleImageDemo.data;
      String router=routerDetails.s;
+    
 
   final Set<Polyline> _polyline = {};  
              
@@ -163,6 +165,7 @@ Set<Marker>markers;
                        x=pos.toString(),
                        user.uid,
                       );
+                       mapa.ID=user.uid;
                        url = 'http://10.0.2.2:5000/api?Query=' +space.toString()+router.toString()+space.toString()+x.toString()+space.toString()+d.toString()+space.toString()+user.uid.toString()+space.toString();
                           s = await Getdata(url);
                           var DecodedData = jsonDecode(s);
@@ -247,10 +250,10 @@ Set<Marker>markers;
               //    http.Client().close();
                           
                             
-                    //        Navigator.push(
-                    //  context,
-                    //  MaterialPageRoute(builder: (context) => MyApp()),
-                    // );
+                           Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => meeeeeee()),
+                    );
 
 
 
