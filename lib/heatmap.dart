@@ -57,9 +57,15 @@ class _meeeeeeeState extends State<meeeeeee> {
       ) : Text(errorMsg != null ? errorMsg : "Loading...");
 
     return new Scaffold(
-        appBar: new AppBar(
-          title: new Text(widget.title),
-        ),
+       backgroundColor: Colors.brown[100],
+      appBar: AppBar(
+        backgroundColor: Colors.brown[400],
+        elevation: 0.0,
+        title: Text("Heatmap"),
+      ),
+        // appBar: new AppBar(
+        //   title: new Text(widget.title),
+        // ),
         body: new ListView(
           children: <Widget>[
             img,

@@ -5,13 +5,9 @@ import 'package:flutter_appp/help.dart';
 import 'package:flutter_appp/homeItems.dart';
 import 'package:flutter_appp/your_places.dart';
 //import 'package:flutter/material.dart';
-import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_appp/database.dart';
-import 'package:flutter_appp/user.dart';
-import 'package:provider/provider.dart';
 import 'package:flutter_appp/addAcessPoint.dart';
 class UploadMultipleImageDemo extends StatefulWidget {
   //global variable
