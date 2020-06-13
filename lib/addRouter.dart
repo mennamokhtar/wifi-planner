@@ -104,12 +104,13 @@ class _routerDetailsState extends State<routerDetails> {
 
                   onPressed: () async{
                     pritt();
-                     await database(uid: user.uid).updateUserData(                       
-                      UploadMultipleImageDemo.data,
-                      routerDetails.s=widget.post.data["name"],
-                      'hooooooo',
-                      user.uid,
-                      );
+                    //  await database(uid: user.uid).updateUserData(                       
+                    //   UploadMultipleImageDemo.data,
+                    //   routerDetails.s=widget.post.data["name"],
+                    //   'hooooooo',
+                    //   user.uid,
+
+                    //   );
                    Navigator.push(
                  context,
                  MaterialPageRoute(builder: (context) => mapa()),
