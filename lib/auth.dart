@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_appp/user.dart';
 import 'package:flutter_appp/database.dart';
+import 'package:flutter_appp/yarab.dart';
 
 class AuthService{
 
@@ -41,7 +42,8 @@ try {
   AuthResult result =await _auth.createUserWithEmailAndPassword(email: email, password: password);
   FirebaseUser user=result.user; 
   //create a new document with the uid
-  await database(uid:user.uid ).updateUserData('dataa','accesspoint','access point location','uid');
+  await database(uid:user.uid ).updateUserData('dataa','accesspoint','access point location','uid','0');
+  await count(uid:user.uid).update('0');
 
   return _userFromFirebaseUser(user);
   

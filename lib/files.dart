@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_appp/auth.dart';
 import 'package:flutter_appp/help.dart';
 import 'package:flutter_appp/homeItems.dart';
+import 'package:flutter_appp/indoor_map.dart';
 import 'package:flutter_appp/your_places.dart';
 //import 'package:flutter/material.dart';
 import 'package:firebase_storage/firebase_storage.dart';
