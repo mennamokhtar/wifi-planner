@@ -182,24 +182,32 @@ finished_points2.add(latlang_points[i+1]);
         elevation: 0.0,
         title: Text("heyy"),
       ),
-        body: GoogleMap(
-          markers:markers,
-             onTap: (pos) async{
-                       await database(uid: user.uid).updateUserData(
-                      
-                       d,
-                      routerDetails.s,
-                       x=pos.toString(),
-                       user.uid,
-                       '0',
-                      );
-                       indoor.ID=user.uid;
-                       url = 'http://10.0.2.2:5000/api?Query=' +space.toString()+router.toString()+space.toString()+x.toString()+space.toString()+d.toString()+space.toString()+user.uid.toString()+space.toString();
-                          s = await Getdata(url);
-                          var DecodedData = jsonDecode(s);
-                          setState(() {
-                            QueryText = DecodedData['Query'];
-                          });
+        body: Stack(
+          children:<Widget>[
+             Container(
+                 child: Center(
+            child:SizedBox(
+               width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                
+               child: GoogleMap(
+            markers:markers,
+                 onTap: (pos) async{
+                           await database(uid: user.uid).updateUserData(
+                          
+                           d,
+                          routerDetails.s,
+                           x=pos.toString(),
+                           user.uid,
+                           '0',
+                          );
+                           indoor.ID=user.uid;
+                           url = 'http://10.0.2.2:5000/api?Query=' +space.toString()+router.toString()+space.toString()+x.toString()+space.toString()+d.toString()+space.toString()+user.uid.toString()+space.toString();
+                              s = await Getdata(url);
+                              var DecodedData = jsonDecode(s);
+                              setState(() {
+                                QueryText = DecodedData['Query'];
+                              });
     // you have latitude and longitude here 
     print(pos);
     Marker m=Marker(
@@ -216,16 +224,82 @@ finished_points2.add(latlang_points[i+1]);
     //  longitude = latLng.longitude;
      
   },
-           polylines: _polyline,
-          //  polylines:_poly,
-          onMapCreated: _onMapCreated,
-          initialCameraPosition: CameraPosition(
-            target: _center,
-            zoom: 11.0,
-          
+               polylines: _polyline,
+            //  polylines:_poly,
+            onMapCreated: _onMapCreated,
+            initialCameraPosition: CameraPosition(
+                target: _center,
+                zoom: 11.0,
+            
+            ),
+             mapType: MapType.none,
           ),
-        ),
+            ),
+            ),
+             ),
+                          Stack(  
+            children: <Widget>[ 
+               
+              // Container(
+               
+              //    margin: EdgeInsets.only(top:MediaQuery.of(context).size.height-600  ),
+              //   child: RaisedButton(
+                   
+              //          shape: RoundedRectangleBorder(
+              //            borderRadius: new BorderRadius.circular(10.0),
+              //          ),
+              
+              //        child:new Icon(
+              //          Icons.add,
+              //          color: Colors.white,),
+              //         color: Colors.black,
+              //         elevation: 4.0,
+              //         onPressed: () {
+              //       Navigator.push(
+              //        context,
+              //        MaterialPageRoute(builder: (context) => addAcessPoint()),
+              //       );
+                 
+              
+        
+              //          },
+              //       ),
+              // ),
+            
+             Container(
+                margin: EdgeInsets.only(top:MediaQuery.of(context).size.height-650  ),
+               child: FloatingActionButton.extended(
+                  
+                onPressed: () async {
+        //  Navigator.push(
+        //              context,
+        //              MaterialPageRoute(builder: (context) => heatmap()),
+        //             );
+        
+           
 
-        );
+                         
+              //    http.Client().close();
+                          
+                            
+                           Navigator.push(
+                     context,
+                     MaterialPageRoute(builder: (context) => meeeeeee()),
+                    );
+
+
+
+                },
+                tooltip: 'Choose file to import', 
+               backgroundColor: Colors.black,
+               //icon:Icon(Icons.add),
+               label: Text('save'),
+            ),
+             )
+    
+                  ],
+                  ) ,
+          ],
+        ) );
   }
 }
