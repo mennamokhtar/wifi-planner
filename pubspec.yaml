@@ -47,7 +47,7 @@ dependencies:
   path_provider: ^1.6.5
   open_file: ^3.0.1
   http:
-  
+  starflut: ^0.6.0  
 
 dev_dependencies:
   flutter_test:

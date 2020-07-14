@@ -26,8 +26,10 @@ class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
 
 
   final AuthService _auth=AuthService();
-  List<homeItems> choices=[homeItems(name:'Your Places',icon:Icon(Icons.home))
-  ,homeItems(name:'Insert A New Place',icon:Icon(Icons.add)),
+  List<homeItems> choices=
+  [
+    // homeItems(name:'Your Places',icon:Icon(Icons.home)),
+  homeItems(name:'Insert A New Place',icon:Icon(Icons.add)),
   homeItems(name:'Help',icon:Icon(Icons.help))];
   String _path;
   String s='hiiiii';
@@ -124,23 +126,24 @@ class UploadMultipleImageDemoState extends State<UploadMultipleImageDemo> {
         ],
         ) ,
         body:ListView.builder(
-          itemCount: 3,
+          itemCount: 2,
           itemBuilder: (context,index){
             return Card(
               child: ListTile(
                 onTap: (){
-                  if(index==0){  
-               Navigator.push(
-               context,
-               MaterialPageRoute(builder: (context) => your_places()),
-              );}
-              else if(index==1){  
+              //     if(index==0){  
+              //  Navigator.push(
+              //  context,
+              //  MaterialPageRoute(builder: (context) => your_places()),
+              // );}
+              // else 
+              if(index==0){  
                  openFileExplorer();
               }
-              else if(index==2){  
+              else if(index==1){  
                Navigator.push(
                context,
-               MaterialPageRoute(builder: (context) => indoor()),
+               MaterialPageRoute(builder: (context) => help()),
               );}           
               
                  

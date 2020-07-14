@@ -180,7 +180,7 @@ finished_points2.add(latlang_points[i+1]);
       appBar: AppBar(
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
-        title: Text("heyy"),
+        title: Text("Indoor Map"),
       ),
         body: Stack(
           children:<Widget>[
